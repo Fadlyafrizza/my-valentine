@@ -130,10 +130,12 @@ const accept = () => {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  min-height: 100dvh; 
   padding: 20px;
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   position: relative;
+  overflow: hidden; 
 }
 
 .content-wrapper {
@@ -147,11 +149,12 @@ const accept = () => {
 }
 
 .bubble-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  height: 100dvh; 
   pointer-events: none;
   z-index: 999;
   overflow: hidden;
@@ -159,19 +162,24 @@ const accept = () => {
 
 .love-bubble {
   position: absolute;
-
+  bottom: -10%; 
   animation: floatUp ease-in forwards, sideWays ease-in-out infinite alternate;
 }
 
 @keyframes floatUp {
   0% {
     bottom: -10%;
+    opacity: 0;
     transform: scale(0.5);
   }
-
+  
+  10% {
+    opacity: 1;
+  }
 
   100% {
     bottom: 110%;
+    opacity: 0;
     transform: scale(1);
   }
 }
@@ -223,6 +231,44 @@ button {
   100% {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .success-text {
+    font-size: 1.5rem;
+  }
+  
+  .question-text {
+    font-size: 1.5rem;
+  }
+  
+  button {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+  
+  .gif-image {
+    max-width: 80%;
+  }
+  
+  .love-bubble {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .success-text {
+    font-size: 1.2rem;
+  }
+  
+  .question-text {
+    font-size: 1.2rem;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
 }
 </style>
